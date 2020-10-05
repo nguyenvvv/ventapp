@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ventapp/make_post.dart';
 import 'package:ventapp/models/post_model.dart';
+import 'package:flutter_socket_io/flutter_socket_io.dart';
+import 'make_post.dart';
 
 void main() {
   runApp(MyApp());
@@ -105,20 +108,15 @@ class _MyHomePageState extends State<MyHomePage> {
               //child: ListView(
               //children: ,
             )),
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
         child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => MakePost()));
+        },
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       // This trailing comma makes auto-formatting nicer for build methods.

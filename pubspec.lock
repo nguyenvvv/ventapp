@@ -63,7 +63,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_socket_io:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_socket_io
       url: "https://pub.dartlang.org"
