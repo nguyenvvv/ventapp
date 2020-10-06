@@ -105,8 +105,11 @@ class _MyHomePageState extends State<MyHomePage> {
             Expanded(
                 child: Container(
               decoration: BoxDecoration(color: Colors.grey),
-              //child: ListView(
-              //children: ,
+              child: ListView.builder(
+                  itemCount: posts.length,
+                  itemBuilder: (context, index) {
+                    return Text(posts[index].text);
+                  }),
             )),
           ],
         ),

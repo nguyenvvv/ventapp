@@ -8,6 +8,10 @@ class Post {
   });
 }
 
+void add_post(String text, String title) {
+  var update_post = new Post(text: text, title: title);
+  posts.add(update_post);
+}
 // Example posts
 
 List<Post> posts = [
