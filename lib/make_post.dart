@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:ventapp/models/post_model.dart';
+
+class MakePost extends StatefulWidget {
+  @override
+  _MakePost createState() {
+    return _MakePost();
+  }
+}
 
 // ignore: must_be_immutable
-class MakePost extends StatelessWidget {
-  TextEditingController textFieldController = TextEditingController();
+class _MakePost extends State<MakePost> {
+  TextEditingController controllerOne = TextEditingController();
+  TextEditingController controllerTwo = TextEditingController();
+
+  String title = "";
+  String text = "";
 
   @override
   Widget build(BuildContext context) {
@@ -15,20 +27,32 @@ class MakePost extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(), labelText: "Title"),
-                ),
+                    controller: controllerOne,
+                    onChanged: (String title) {
+                      title = title;
+                    },
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(), labelText: "Title")),
                 TextField(
+                  controller: controllerTwo,
+                  onChanged: (String text) {
+                    text = text;
+                  },
                   decoration: InputDecoration(
                       border: OutlineInputBorder(), labelText: "Your thoughts"),
                 ),
                 RaisedButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    _sendDataBack(context);
                   },
                   child: Text('Submit Post'),
                 )
               ]),
         ));
+  }
+
+  void _sendDataBack(BuildContext context) {
+    var newPost = new Post(title: controllerOne.text, text: controllerTwo.text);
+    Navigator.pop(context, newPost);
   }
 }

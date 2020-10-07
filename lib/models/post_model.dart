@@ -1,17 +1,18 @@
 class Post {
-  final String title;
-  final String text;
+  String title;
+  String text;
 
   Post({
     this.title,
     this.text,
   });
+
+  void addPost({String text, String title}) {
+    var updatePost = new Post(text: text, title: title);
+    posts.add(updatePost);
+  }
 }
 
-void add_post(String text, String title) {
-  var update_post = new Post(text: text, title: title);
-  posts.add(update_post);
-}
 // Example posts
 
 List<Post> posts = [
