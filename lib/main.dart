@@ -44,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
+        title: Text("Posts"),
       ),
       body: Center(
         child: Column(
@@ -52,12 +52,25 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Expanded(
                 child: Container(
-              decoration: BoxDecoration(color: Colors.grey),
-              child: ListView.builder(
-                  itemCount: posts.length,
-                  itemBuilder: (context, index) {
-                    return Text(posts[index].text);
-                  }),
+              decoration: BoxDecoration(color: Colors.white),
+              child: ListView.separated(
+                padding: const EdgeInsets.all(10),
+                itemCount: posts.length,
+                itemBuilder: (context, index) {
+                  final Post post = posts[index];
+                  return Column(
+                    children: <Widget>[
+                      Container(
+                          height: 50,
+                          decoration: BoxDecoration(color: Colors.grey),
+                          child: Center(child: Text(post.text))),
+                      //Text(post.title)
+                    ],
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    const Divider(),
+              ),
             )),
           ],
         ),
@@ -74,14 +87,14 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _awaitReturnValueFromMakePost(BuildContext context) async {
-    // start the SecondScreen and wait for it to finish with a result
+    // When the user clicks the add post button, it waits for the user to finish and sends back the result
     final result = await Navigator.push(
         context,
         MaterialPageRoute(
           builder: (context) => MakePost(),
         ));
 
-    // after the SecondScreen result comes back update the Text widget with it
+    // Once the result comes back, the post is added to a post list and the page is updated
     setState(() {
       posts.add(result);
     });

@@ -8,7 +8,6 @@ class MakePost extends StatefulWidget {
   }
 }
 
-// ignore: must_be_immutable
 class _MakePost extends State<MakePost> {
   TextEditingController controllerOne = TextEditingController();
   TextEditingController controllerTwo = TextEditingController();
