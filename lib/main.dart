@@ -77,6 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
+        backgroundColor: Colors.purple[300],
         onPressed: () {
           _awaitReturnValueFromMakePost(context);
         },

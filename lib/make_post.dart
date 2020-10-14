@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ventapp/main.dart';
 import 'package:ventapp/models/post_model.dart';
 
 class MakePost extends StatefulWidget {
@@ -19,8 +20,11 @@ class _MakePost extends State<MakePost> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Make a post"),
-        ),
+            title: Text("Make a post"),
+            leading: IconButton(
+              icon: Icon(Icons.chevron_left),
+              onPressed: () => Navigator.pop(context, false),
+            )),
         body: Center(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
