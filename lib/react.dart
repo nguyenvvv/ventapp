@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ventapp/models/post_model.dart';
 import 'main.dart';
 
 class react extends StatelessWidget {
@@ -9,21 +10,21 @@ class react extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(post.title),
-      ),
-      body: Center(
-         child: Column(
-             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-             children:[
-              Align(
-                alignment: Alignment.center,
-                child: Text(post.text),
-              ),
+        appBar: AppBar(
+          title: Text(post.title),
+        ),
+        body: Center(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Align(
+                  alignment: Alignment.center,
+                  child: Text(post.text),
+                ),
                 TextField(
-                decoration: InputDecoration(border: OutlineInputBorder(), labelText: "Comment")
-              ),
-      ]),
-    ));
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(), labelText: "Comment")),
+              ]),
+        ));
   }
 }

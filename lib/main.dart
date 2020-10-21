@@ -1,17 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ventapp/make_post.dart';
+import 'package:ventapp/models/post_model.dart';
 import 'package:ventapp/react.dart';
 import 'make_post.dart';
-
-//I tried to remove all references to backendless, however if you find any please delete them
-
-class Post {
-  //Making Post a class lets me reference it easier when using it other files
-  final String title;
-  final String text;
-
-  Post(this.title, this.text);
-}
 
 void main() {
   runApp(MyApp());
@@ -41,18 +32,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-  List<Post> posts = [
-    Post(
-        "I\'m upset!",
-        "I got a C on my paper that I thought I did well on.",
-          ),
-    Post(
-        "I need to sleep",
-        "I am having trouble sleeping because I miss my cat.",
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -65,33 +44,33 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Expanded(
                 child: Container(
-                  decoration: BoxDecoration(color: Colors.white),
-                  child: ListView.separated(
-                    padding: const EdgeInsets.all(10),
-                    itemCount: posts.length,
-                    itemBuilder: (context, index) {
-                      //final Post post = posts[index];
-                      return Column(
-                        children: <Widget>[
-                          ListTile(
-                            title: Text(posts[index].title),
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  //Had more success with this method than creating a class to handle the transition to react
-                                  builder: (context) => react(post: posts[index]),
-                                ),
-                              );
-                            },
-                          ),
-                        ],
-                      );
-                    },
-                    separatorBuilder: (BuildContext context, int index) =>
+              decoration: BoxDecoration(color: Colors.white),
+              child: ListView.separated(
+                padding: const EdgeInsets.all(10),
+                itemCount: posts.length,
+                itemBuilder: (context, index) {
+                  //final Post post = posts[index];
+                  return Column(
+                    children: <Widget>[
+                      ListTile(
+                        title: Text(posts[index].title),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              //Had more success with this method than creating a class to handle the transition to react
+                              builder: (context) => react(post: posts[index]),
+                            ),
+                          );
+                        },
+                      ),
+                    ],
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) =>
                     const Divider(),
-                  ),
-                )),
+              ),
+            )),
           ],
         ),
       ),
